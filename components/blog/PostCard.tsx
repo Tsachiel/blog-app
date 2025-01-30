@@ -1,8 +1,9 @@
 import { PostType } from "@/types";
 import { safeUrl } from "@/lib/utils"; 
-import { Card, CardContent, Typography, CardActions, Button } from "@mui/material";
+import { Card, CardContent, Typography, CardActions } from "@mui/material";
 import Link from "next/link";
-import OpenInNewTab from "@/components/ui/OpenInNewTab";
+import OpenInNewTab from "@/components/ui/OpenInNewTab"; 
+import ClapsButton from "@/components/ClapsButton";
 
 export default function PostCard({ post }: { post: PostType }) {
   return (
@@ -10,7 +11,7 @@ export default function PostCard({ post }: { post: PostType }) {
       <CardContent>
         <Typography variant="h5" component="div">
           <Link href={`/posts/${safeUrl(post.id)}`} passHref>
-            <Button sx={{ textTransform: "none" }}>{post.title}</Button>
+            {post.title}
           </Link>
         </Typography>
         <Typography variant="body2" color="text.secondary">
@@ -23,6 +24,7 @@ export default function PostCard({ post }: { post: PostType }) {
 
       <CardActions>
         <OpenInNewTab url={post.id} />
+        <ClapsButton postId={post.id} />
       </CardActions>
     </Card>
   );
