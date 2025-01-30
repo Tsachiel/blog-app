@@ -3,19 +3,19 @@ import OpenInNewTab from "@/components/ui/OpenInNewTab";
 import { fetchPosts } from "@/lib/fetchPosts";
 import { Card, CardActions, CardContent, Container, Typography } from "@mui/material";
 
-type PageProps = {
-  params: {
-    postId: string;
-  };
-};
+import { notFound } from "next/navigation";
 
-export default async function PostPage({ params }: PageProps) {
+export default async function PostPageWrapper({ params }: { params: { postId?: string } }) {
+  if (!params?.postId) {
+    console.error("postId is undefined");
+    return notFound();
+  }
 
   const posts = await fetchPosts();
   const decodedPostId = decodeURIComponent(params.postId);
   const post = posts.find((p) => p.id === decodedPostId);
 
-  if(!post) return <div>no post</div>
+  if(!post) return notFound();
   return (
     
       <Container maxWidth="md" sx={{ marginTop: 4 }}>
