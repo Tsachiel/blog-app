@@ -8,10 +8,9 @@ import { SearchBarProps } from "@/types";
 
 export default function SearchBar({ searchQuery }: SearchBarProps) {
     const router = useRouter();
-    const searchParams = useSearchParams();
     const [searchTerm, setSearchTerm] = useState(searchQuery);
   
-    const debouncedSearch = useDebounce(searchTerm, 2000); 
+    const debouncedSearch = useDebounce(searchTerm, 1000); 
   
     useEffect(() => {
       const params = new URLSearchParams();
