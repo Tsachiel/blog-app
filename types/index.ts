@@ -7,3 +7,7 @@ export type PostType = {
     content: string;
     source: string;
   };
+
+export type SearchBarProps = {
+  searchQuery: string;
+}
