@@ -11,4 +11,9 @@ export function formatDateTime(dateString: string): string {
   
     return `${formattedDate}, ${formattedTime}`;
   }
+
+  export function safeUrl(url: string): string {
+    return encodeURIComponent(url);
+  }
+  
   
