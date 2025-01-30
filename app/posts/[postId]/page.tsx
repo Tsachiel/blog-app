@@ -1,4 +1,7 @@
+import ClapsButton from "@/components/ClapsButton";
+import OpenInNewTab from "@/components/ui/OpenInNewTab";
 import { fetchPosts } from "@/lib/fetchPosts";
+import { Card, CardActions, CardContent, Container, Typography } from "@mui/material";
 
 type PageProps = {
   params: {
@@ -6,7 +9,7 @@ type PageProps = {
   };
 };
 
-export default async function PostPageWrapper({ params }: PageProps) {
+export default async function PostPage({ params }: PageProps) {
 
   const posts = await fetchPosts();
   const decodedPostId = decodeURIComponent(params.postId);
@@ -14,12 +17,22 @@ export default async function PostPageWrapper({ params }: PageProps) {
 
   if(!post) return <div>no post</div>
   return (
-    <div>
-      <h1>{post.title}</h1>
-      <p>{post.description}</p>
-      <p><strong>Source:</strong> {post.source}</p>
-      <p><strong>Published:</strong> {post.publishedAt}</p>
-      <p>{post.content || "No content available."}</p>
-    </div>
+    
+      <Container maxWidth="md" sx={{ marginTop: 4 }}>
+      <Card>
+        <CardContent>
+          <Typography variant="h4" gutterBottom>{post.title}</Typography>
+          <Typography variant="subtitle1" color="textSecondary">{post.description}</Typography>
+          <Typography variant="caption" display="block" gutterBottom>
+            <strong>Source:</strong> {post.source} | <strong>Published:</strong> {post.publishedAt}
+          </Typography>
+        <CardActions>
+          <ClapsButton postId={post.id} />
+          <OpenInNewTab url={post.id} />
+        </CardActions>
+          <Typography variant="body1" sx={{ marginTop: 2 }}>{post.content || "No content available."}</Typography>
+        </CardContent>
+      </Card>
+    </Container>
   );
 }
