@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Blog App
 
-## Getting Started
+This is a **Next.js-based** blog platform that fetches posts from the **NewsAPI** and allows users to view, search, and upvote/downvote posts.
 
-First, run the development server:
+## Features
+- Fetches latest news articles dynamically
+- Client-side routing with Next.js App Router
+- Server-side rendering (SSR) and caching for better performance
+- Search functionality with useDebounce for optimized filtering
+- Claps system similar to Medium (Upvote/Downvote with a local JSON-based API)
+- SEO optimizations (`metadata`, `openGraph`, `robots.txt`)
+- Responsive Material-UI styling
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
+- **Next.js 13+** (App Router)
+- **React.js**
+- **Material-UI** for styling
+- **Mock DB via JSON-based claps API**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📌 Installation Guide
 
-## Learn More
+### 🔹 1. Clone the repository:
+```sh
+--open the terminal and run the following commands:
+1.git clone https://github.com/your-username/tsachiel-blog-app.git
+2.cd blog-app 
+3.npm i after cloning the project
 
-To learn more about Next.js, take a look at the following resources:
+--Create a .env file in the root directory and add the following:
+1. NEWS_API_BASE_URL=https://newsapi.org/v2/top-headlines
+2. NEWS_API_KEY=148adb7948294936bd4491a0d69f99bf
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+--Run the development server: npm run dev (The project will be available at http://localhost:3000.)
