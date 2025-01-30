@@ -1,17 +1,21 @@
-import { PostType } from "@/types";
-import { safeUrl } from "@/lib/utils"; 
-import { Card, CardContent, Typography, CardActions } from "@mui/material";
 import Link from "next/link";
+import { PostType } from "@/types";
+import { Card, CardContent, Typography, CardActions } from "@mui/material";
 import OpenInNewTab from "@/components/ui/OpenInNewTab"; 
-import ClapsButton from "@/components/ClapsButton";
+import ClapsButton from "@/components/ClapsButton"; 
+import { safeUrl } from "@/lib/utils";
 
 export default function PostCard({ post }: { post: PostType }) {
+  const postUrl = `/posts/${safeUrl(post.id)}`;
+
   return (
     <Card sx={{ maxWidth: 600, margin: "1rem auto" }}>
       <CardContent>
         <Typography variant="h5" component="div">
-          <Link href={`/posts/${safeUrl(post.id)}`} passHref>
-            {post.title}
+          <Link href={postUrl} passHref>
+            <Typography component="span" sx={{ cursor: "pointer", textDecoration: "underline" }}>
+              {post.title}
+            </Typography>
           </Link>
         </Typography>
         <Typography variant="body2" color="text.secondary">
